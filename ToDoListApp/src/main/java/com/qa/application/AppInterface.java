@@ -1,4 +1,4 @@
-package com.qa.buisness.service;
+package com.qa.application;
 
 public interface AppInterface {
 
