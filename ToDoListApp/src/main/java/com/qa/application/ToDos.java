@@ -1,4 +1,4 @@
-package com.qa.model;
+package com.qa.application;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

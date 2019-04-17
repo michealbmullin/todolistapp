@@ -1,4 +1,4 @@
-package com.qa.Test;
+package com.qa.application;
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;

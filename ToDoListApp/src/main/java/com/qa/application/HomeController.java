@@ -1,4 +1,4 @@
-package com.qa.application.controller;
+package com.qa.application;
 
 
 
