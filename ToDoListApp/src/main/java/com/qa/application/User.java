@@ -15,11 +15,16 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getUser_id() {
-		return user_id;
+	private Long userId;
+	private String email;
+	private String password;
+	
+	
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getEmail() {
 		return email;
@@ -33,9 +38,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String email;
-	private String password;
-	private Long user_id;
+	// method stubs
 	public void getUser(){
 	}
 	public void validateUser(){
