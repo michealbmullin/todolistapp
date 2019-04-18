@@ -8,23 +8,31 @@ import javax.persistence.Id;
 
 public class ToDos {
 	
-	public Long getTask_id() {
-		return task_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long taskId;
+	private Long userId;
+	private String dateAdded;
+	private String task;
+	private Boolean taskStatus;
+	
+	public Long getTaskId() {
+		return taskId;
 	}
-	public void setTask_id(Long task_id) {
-		this.task_id = task_id;
+	public void setTaskId(Long taskId) {
+		this.taskId = taskId;
 	}
-	public Long getUser_id() {
-		return user_id;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
-	public String getDate_added() {
-		return date_added;
+	public String getDateAdded() {
+		return dateAdded;
 	}
-	public void setDate_added(String date_added) {
-		this.date_added = date_added;
+	public void setDateAdded(String dateAdded){
+		this.dateAdded = dateAdded;
 	}
 	public String getTask() {
 		return task;
@@ -32,39 +40,33 @@ public class ToDos {
 	public void setTask(String task) {
 		this.task = task;
 	}
-	public Boolean getTask_status() {
-		return task_status;
+	public Boolean getTaskStatus() {
+		return taskStatus;
 	}
-	public void setTask_status(Boolean task_status) {
-		this.task_status = task_status;
+	public void setTaskStatus(Boolean taskStatus) {
+		this.taskStatus = taskStatus;
 	}
-	@Id
-	@GeneratedValue
-	private Long task_id;
-	private Long user_id;
-	private String date_added;
-	private String task;
-	private Boolean task_status;
+
 	public ToDos() {
 		
 	}
-	public ToDos(Long user_id,String date_added,String task,Boolean task_status, Long task_id) {
-		this.user_id=user_id;
-		this.date_added=date_added;
+	public ToDos( Long taskId,Long userId,String dateAdded,String task,Boolean taskStatus) {
+		this.userId=userId;
+		this.dateAdded=dateAdded;
 		this.task=task;
-		this.task_status=task_status;
-		this.task_id=task_id;
+		this.taskStatus=taskStatus;
+		this.taskId=taskId;
 	}
 //method stubs
-
-	public void getTasks(){
-	
-	}
-	public void taskDoneStatus(){
-	
-	}
-	public void addTasks(){
-	
-	} 
+//
+//	public void getTasks(){
+//	
+//	}
+//	public void taskDoneStatus(){
+//	
+//	}
+//	public void addTasks(){
+//	
+//	} 
 
 }

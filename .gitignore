@@ -3,3 +3,5 @@
 *.war
 /first_springboot_app
 /.recommenders/
+/ali app*
+/ToDoLogicSpring*

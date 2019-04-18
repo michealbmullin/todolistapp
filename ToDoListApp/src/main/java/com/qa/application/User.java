@@ -9,6 +9,12 @@ import javax.persistence.Id;
 
 public class User {
 	
+	public User() {
+		
+	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getUser_id() {
 		return user_id;
 	}
