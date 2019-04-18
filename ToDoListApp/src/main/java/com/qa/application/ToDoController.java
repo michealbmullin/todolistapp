@@ -18,19 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ToDoController {
 	@Autowired
 	private ToDoRepository toDoRepository;
-//	
-//	@RequestMapping(value = "toDos", method = RequestMethod.GET)
-//    public List<ToDos> list(){
-//        return toDoRepository.findAll();
-//	}
-//	@RequestMapping(value = "toDos/{taskId}", method = RequestMethod.GET)
-//    public ToDos get(@PathVariable Long task_id){
-//        return toDoRepository.findOne(task_id);
-//	}
-//	@RequestMapping(value = "toDos", method = RequestMethod.POST)
-//    public ToDos create(@RequestBody ToDos todos){
-//        return toDoRepository.saveAndFlush(todos);
-//	}
+
 	@RequestMapping(value = "toDos", method = RequestMethod.GET)
     public List<ToDos> list(){
         return toDoRepository.findAll();
