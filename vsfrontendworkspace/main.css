@@ -1,0 +1,43 @@
+h1 {
+    text-align: center;
+}
+
+h2,
+h3 {
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: inline;
+}
+
+h2 {
+    padding-left: 30%;
+}
+
+h3 {
+    padding-left: 10%;
+}
+
+.text {
+    font-family: "arial"
+}
+
+#navbar {
+    background-color: darkcyan;
+}
+
+.navbar-nav {
+    color: white;
+}
+
+.tasklist {
+    padding: 10%, 10, 10%, 10%;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+.addtasks {
+    border: 1px black;
+}
