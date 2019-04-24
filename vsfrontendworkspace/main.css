@@ -30,14 +30,24 @@ h3 {
     color: white;
 }
 
-.tasklist {
-    padding: 10%, 10, 10%, 10%;
-}
-
 body {
     background-color: aquamarine;
 }
 
 .addtasks {
     border: 1px black;
+}
+
+#tasksblock {
+    margin-left: 25%;
+}
+
+.tasksbuttons {
+    color: aquamarine;
+    border-radius: 10px;
+    margin-left: 15%;
+}
+
+.tasklist {
+    padding: 5%;
 }
