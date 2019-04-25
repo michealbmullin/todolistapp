@@ -23,7 +23,7 @@ public class ToDoController {
     public List<ToDos> list(){
         return toDoRepository.findAll();
     }
-	@RequestMapping(value = "toDos", method = RequestMethod.POST)
+	@RequestMapping(value = "addtoDos", method = RequestMethod.POST)
     public ToDos create(@RequestBody ToDos ToDos){
         return toDoRepository.saveAndFlush(ToDos);
     }
