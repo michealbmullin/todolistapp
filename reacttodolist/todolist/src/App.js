@@ -11,7 +11,9 @@ class App extends Component {
             <h1 > Todays tasks </h1>
             </div>
             <div>
-            <AddTasks/>
+                <GetTasks/>
+                <AddTasks/>
+            
             </div>
             <div>
 
