@@ -40,16 +40,16 @@ function gettasks() {
     getty.onload = function() {
         data = getty.response;
         let todoitems = Object.values(data);
-        let counter = 1;
+        let county = 1;
         let len = todoitems.length;
         for (i = 0; i < len; i++) {
             let ele = document.createElement("li");
             let previoustasky = todoitems[i].task;
-            ele.setAttribute = "id", 'task${counter++}';
-            ele.setAttribute = "class", "taskslist";
+            ele.setAttribute("id", `task ${county++}`);
+            ele.setAttribute("class", "taskslist");
             ele.innerHTML = previoustasky;
             let buttony = document.createElement("button");
-            buttony.innerHTML = "placeholder";
+            buttony.innerHTML = " delete ";
             buttony.setAttribute("class", "tasksbuttons");
             ele.append(buttony);
             document.getElementById("taskunorderedlist").append(ele);
@@ -58,6 +58,10 @@ function gettasks() {
         i = 0;
     }
     getty.send();
+}
+
+function delety() {
+
 }
 
 // function nextstep() {
