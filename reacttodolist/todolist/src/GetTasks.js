@@ -29,7 +29,7 @@ export default class GetTasks extends Component {
     }
 
     render() {
-        let tasks = this.state.datArr.map((d,i) => <p key={"task"+i}>{d.task}</p>);
+        let tasks = this.state.datArr.map((d,i) => <p key={"task "+`${this.datArr.taskId}`}> {d.task} <button> delete </button></p>);
         return (
             <div>
                 {tasks}
