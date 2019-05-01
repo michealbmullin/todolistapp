@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddTasks from './addTasks';
 import GetTasks from './GetTasks';
-import TaskDeletion from './TaskDeletion';
+
 
 class App extends Component {
 
