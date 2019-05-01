@@ -37,7 +37,7 @@ public class ToDoController {
         BeanUtils.copyProperties(ToDos, existingToDo);
         return toDoRepository.saveAndFlush(ToDos);
     }
-	@RequestMapping(value = "toDos/{taskId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "toDos/{id}", method = RequestMethod.DELETE)
     public ToDos delete(@PathVariable Long id){
         ToDos existingToDo = toDoRepository.findOne(id);
         toDoRepository.delete(existingToDo);

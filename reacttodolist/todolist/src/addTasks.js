@@ -52,7 +52,7 @@ render(){
         <input type="text" onChange={this.textUpdater}/>
         <button onClick={this.postWrapper} >add tasks</button>
     {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)}
-    {console.log(this.state.arr)}
+    
         </div>
     );
     }
