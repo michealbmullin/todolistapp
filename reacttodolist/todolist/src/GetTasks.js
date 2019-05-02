@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TaskUpdater from './TaskUpdater';
 
 export default class GetTasks extends Component {
     constructor(props) {
@@ -43,7 +43,9 @@ export default class GetTasks extends Component {
     }
 
     render() {
-        let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId}> {d.task} <button onClick={()=>{this.deleteTask(d.taskId)}}> delete </button></p>);
+        let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId}> {d.task} <button onClick={()=>{this.deleteTask(d.taskId)}}> delete </button>
+        <TaskUpdater task={d.task} taskpassId={d.taskId}/>
+        </p>);
         return (
             <div>
                 {tasks}
