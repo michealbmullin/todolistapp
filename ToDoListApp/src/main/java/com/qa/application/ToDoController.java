@@ -31,7 +31,7 @@ public class ToDoController {
     public ToDos get(@PathVariable Long id){
         return toDoRepository.findOne(id);
     }
-	@RequestMapping(value = "toDos/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "toDos//{id}", method = RequestMethod.PUT)
     public ToDos update(@PathVariable Long id, @RequestBody ToDos ToDos){
         ToDos existingToDo = toDoRepository.findOne(id);
         BeanUtils.copyProperties(ToDos, existingToDo);

@@ -44,7 +44,7 @@ export default class GetTasks extends Component {
 
     render() {
         let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId}> {d.task} <button onClick={()=>{this.deleteTask(d.taskId)}}> delete </button>
-        <TaskUpdater task={d.task} taskpassId={d.taskId}/>
+        <TaskUpdater task={d.task} taskPassId={d.taskId}/>
         </p>);
         return (
             <div>
