@@ -43,6 +43,7 @@ export default class AddTasks extends Component{
    postWrapper=()=>{
        this.addy();
        this.postTask();
+       this.props.refreshTrigger(10);
    }
     
 

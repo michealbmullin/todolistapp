@@ -7,7 +7,8 @@ export default class GetTasks extends Component {
 
         this.state = {
             data: "",
-            datArr: []
+            datArr: [],
+            updatevar:0
         }
     }
 
