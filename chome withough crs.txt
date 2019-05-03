@@ -1,0 +1,6 @@
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+rune this from chrome directory in cmdline
+disables security to be useful.
+essentially chrome with flags.
+crs= cross origiin resource sharing.

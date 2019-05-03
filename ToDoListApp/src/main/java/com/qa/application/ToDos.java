@@ -15,7 +15,7 @@ public class ToDos {
 	private String dateAdded;
 	private String task;
 	private Boolean taskStatus;
-	
+
 	public Long getTaskId() {
 		return taskId;
 	}

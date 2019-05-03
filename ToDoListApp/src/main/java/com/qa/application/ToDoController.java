@@ -23,7 +23,7 @@ public class ToDoController {
     public List<ToDos> list(){
         return toDoRepository.findAll();
     }
-	@RequestMapping(value = "toDos", method = RequestMethod.POST)
+	@RequestMapping(value = "addtoDos", method = RequestMethod.POST)
     public ToDos create(@RequestBody ToDos ToDos){
         return toDoRepository.saveAndFlush(ToDos);
     }
@@ -31,13 +31,13 @@ public class ToDoController {
     public ToDos get(@PathVariable Long id){
         return toDoRepository.findOne(id);
     }
-	@RequestMapping(value = "toDos/{taskId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "toDos//{id}", method = RequestMethod.PUT)
     public ToDos update(@PathVariable Long id, @RequestBody ToDos ToDos){
         ToDos existingToDo = toDoRepository.findOne(id);
         BeanUtils.copyProperties(ToDos, existingToDo);
         return toDoRepository.saveAndFlush(ToDos);
     }
-	@RequestMapping(value = "toDos/{taskId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "toDos/{id}", method = RequestMethod.DELETE)
     public ToDos delete(@PathVariable Long id){
         ToDos existingToDo = toDoRepository.findOne(id);
         toDoRepository.delete(existingToDo);

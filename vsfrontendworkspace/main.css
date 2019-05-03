@@ -1,0 +1,54 @@
+h1 {
+    text-align: center;
+}
+
+h2,
+h3 {
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: inline;
+}
+
+h2 {
+    padding-left: 30%;
+}
+
+h3 {
+    padding-left: 10%;
+}
+
+.text {
+    font-family: "arial"
+}
+
+#navbar {
+    background-color: darkcyan;
+}
+
+.navbar-nav {
+    color: white;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+.addtasks {
+    border: 1px black;
+}
+
+#tasksblock {
+    margin-left: 25%;
+}
+
+.tasksbuttons {
+    background-color: darkslategray;
+    color: aquamarine;
+    border-radius: 10px;
+    margin-left: 14%;
+}
+
+.tasklist {
+    padding: 5%;
+}
