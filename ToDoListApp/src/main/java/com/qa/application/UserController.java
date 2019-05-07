@@ -27,10 +27,13 @@ public class UserController {
 	        return userRepository.saveAndFlush(User);
 	    }
 		@RequestMapping(value = "User/validate", method = RequestMethod.GET)
-	    public User findByEmail(@PathVariable String email){
-	        return userRepository.findOne(email);
+	    public List<User> findByEmailAndPassword(@PathVariable List<String> email,List<String> password){
+			if ((findByEmailAndPassword(email, password).isEmpty())){
+				return
+			}else {
+	        return userRepository.findAll();
 			}
-		
+		}
 		@RequestMapping(value = "User/{userId}", method = RequestMethod.PUT)
 	    public User update(@PathVariable Long id, @RequestBody User User){
 	        User existingUser = userRepository.findOne(id);
