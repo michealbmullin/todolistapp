@@ -2,6 +2,7 @@ package com.qa.application;
 
 import java.util.List;
 
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,16 +23,18 @@ public class UserController {
 	    public List<User> list(){
 	        return userRepository.findAll();
 	    }
-		@RequestMapping(value = "User", method = RequestMethod.POST)
+		@RequestMapping(value = "UserSignup", method = RequestMethod.POST)
 	    public User create(@RequestBody User User){
 	        return userRepository.saveAndFlush(User);
 	    }
-		@RequestMapping(value = "User/validate", method = RequestMethod.GET)
-	    public List<User> findByEmailAndPassword(@PathVariable List<String> email,List<String> password){
-			if ((findByEmailAndPassword(email, password).isEmpty())){
-				return
+		@RequestMapping(value = "User/validate", method = RequestMethod.POST)
+	    public Long findByEmailAndPassword(@RequestBody User user){
+			List<User> matchedCredentials = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+			if (matchedCredentials.isEmpty()){
+				return 0L;
 			}else {
-	        return userRepository.findAll();
+	        	 Long backendId = matchedCredentials.get(0).getUserId();
+	        	return backendId;
 			}
 		}
 		@RequestMapping(value = "User/{userId}", method = RequestMethod.PUT)
