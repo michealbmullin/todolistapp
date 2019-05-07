@@ -10,22 +10,43 @@ export default class LoginSignup extends Component{
             subPasswd:""
         }
     }
-    verifyLogin=()=>{
+    verifyLogin=(e)=>{
+        e.preventDefault();
         let url = "http://localhost:8585/api/v1/User/validate"
         let verify = new XMLHttpRequest();
-        verify.open('GET', url)
-        verify.responseType = "json";
+        verify.open('post', url)
+        verify.setRequestHeader("Content-Type", "application/json");
+        verify.setRequestHeader("Accept", "application/json;charset=UTF-8");
+        let body = {
+            email:this.state.subEmail,
+            password:this.state.subPasswd
+        }
+        body = JSON.stringify(body);
         verify.onload = () => {
             this.setState({
-                loginArr: verify.response,
-                userId:logginArr.userId
+                userId:verify.response
             });
-
+            console.log("userId retrieved")
+            console.log (this.state.userId)
+            if (this.state.userId===0){
+                window.alert("scuffed");
+            }
         }
-        verify.send();
+        verify.send(body);
     }
-    submitEvent=event=>{
-        preventDefault();
+    // submitEvent=(event)=>({
+    //    event.preventDefault();
+    //    this.verifyLogin();
+    //     })
+    emailUpdater=(inp)=>{
+        this.setState({
+            subEmail:inp.target.value
+        })
+    }
+    passUpdater=(inp)=>{
+        this.setState({
+            subPasswd:inp.target.value
+        })
     }
     userSignup=()=>{
         let addyurl = "http://localhost:8585/api/v1/User";
@@ -39,18 +60,22 @@ export default class LoginSignup extends Component{
             email:this.state.subEmail,
             password:this.state.subPasswd
         }
-        let signupbody= JSON.stringify(signupbody);
+        signupbody= JSON.stringify(signupbody);
         posty.send(signupbody);
     }
 
     render(){
         return(
             <div>
-            <form onSubmit={this.submitEvent}>
-                    <input type="email" key="emailaddress" placeholder="please enter your email adress"/>
-                    <input type="password" key="password" placeholder="please enter your password"/>
-                    <input type="submit"><button>submit</button></input>
+                <h2>login</h2>
+            <form onSubmit={this.verifyLogin}>
+                    <input type="email" key="emailaddress" placeholder="please enter your email adress" onChange={this.emailUpdater}/>
+                    <input type="password" key="password" placeholder="please enter your password" onChange={this.passUpdater}/>
+                    <input type="submit"/>
             </form>
+            <div>
+                placeholder for signup
+            </div>
             </div>
         )
     }

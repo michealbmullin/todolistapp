@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddTasks from './addTasks';
 import GetTasks from './GetTasks';
-
+import LoginSignup from './LoginSignup';
 
 
 class App extends Component {
@@ -11,6 +11,12 @@ class App extends Component {
             refreshVar:0,
             seshuserid:0
         }
+    }
+
+    setSeshUserId = (seshuserid) => {
+        this.setState({
+            seshuserid: seshuserid
+        })
     }
     
     callback=(addyRefresh)=>{
@@ -27,7 +33,7 @@ class App extends Component {
                 <div>
                     <h1>login page</h1>
                     <div>
-                    
+                    <LoginSignup setSeshUserId={this.setSeshUserId}/>
                     </div>
                 </div>
 

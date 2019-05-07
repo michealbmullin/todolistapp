@@ -45,7 +45,7 @@ export default class AddTasks extends Component{
        this.postTask();
        this.props.refreshTrigger(10);
    }
-    
+    //  for puttin random as refresh trigger Math.floor(Math.random()*Math.floor(<Max>))
 
 render(){
     return(
