@@ -26,17 +26,18 @@ public class UserController {
 	    public User create(@RequestBody User User){
 	        return userRepository.saveAndFlush(User);
 	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.GET)
-	    public User get(@PathVariable Long id){
-	        return userRepository.findOne(id);
-	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.PUT)
+		@RequestMapping(value = "User/validate", method = RequestMethod.GET)
+	    public User findByEmail(@PathVariable String email){
+	        return userRepository.findOne(email);
+			}
+		
+		@RequestMapping(value = "User/{userId}", method = RequestMethod.PUT)
 	    public User update(@PathVariable Long id, @RequestBody User User){
 	        User existingUser = userRepository.findOne(id);
 	        BeanUtils.copyProperties(User, existingUser);
 	        return userRepository.saveAndFlush(User);
 	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.DELETE)
+		@RequestMapping(value = "User/{userId}", method = RequestMethod.DELETE)
 	    public User delete(@PathVariable Long id){
 	        User existingUser = userRepository.findOne(id);
 	        userRepository.delete(existingUser);

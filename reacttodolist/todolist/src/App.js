@@ -8,7 +8,8 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state={
-            refreshVar:0
+            refreshVar:0,
+            seshuserid:0
         }
     }
     
@@ -21,6 +22,18 @@ class App extends Component {
     }
 
     render() {
+        if (this.state.seshuserid===0){
+            return(
+                <div>
+                    <h1>login page</h1>
+                    <div>
+                    
+                    </div>
+                </div>
+
+            )
+
+        }else{
         return (
             <div>
             <div>
@@ -39,7 +52,7 @@ class App extends Component {
               
         )
     }
-    
+}
 
 
 }
