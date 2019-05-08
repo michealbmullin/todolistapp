@@ -24,7 +24,6 @@ class App extends Component {
    this.setState({
        refreshVar:10+addyRefresh
    })
-//    console.log(this.state.refreshVar)
     }
 
     render() {

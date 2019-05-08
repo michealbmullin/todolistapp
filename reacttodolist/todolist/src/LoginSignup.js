@@ -31,6 +31,7 @@ export default class LoginSignup extends Component{
             if (this.state.userId===0){
                 window.alert("scuffed");
             }
+            this.props.setSeshUserId();
         }
         verify.send(body);
     }

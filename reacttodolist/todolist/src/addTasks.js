@@ -13,7 +13,9 @@ export default class AddTasks extends Component{
             text:inp.target.value
         });
     }
-    
+    rand=()=>{
+        Math.floor(Math.random()*Math.floor(100));
+    }
     addy = () => {
         let arra = this.state.arr;
         arra.push(this.state.text);
@@ -43,7 +45,7 @@ export default class AddTasks extends Component{
    postWrapper=()=>{
        this.addy();
        this.postTask();
-       this.props.refreshTrigger(10);
+       this.props.refreshTrigger(this.rand());
    }
     //  for puttin random as refresh trigger Math.floor(Math.random()*Math.floor(<Max>))
 
