@@ -53,8 +53,8 @@ class App extends Component {
             </div>
             <div>
                
-                <AddTasks refreshTrigger={this.callback} />
-                <GetTasks/>
+                <AddTasks refreshTrigger={this.callback} UserId={this.state.appUserId} />
+                <GetTasks UserId={this.props.appUserId}/>
                
             </div>
             <div>

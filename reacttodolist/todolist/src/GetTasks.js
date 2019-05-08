@@ -6,14 +6,14 @@ export default class GetTasks extends Component {
         super(props);
 
         this.state = {
+           
             data: "",
             datArr: [],
             updatevar:0
         }
     }
-
     getTasks = () => {
-        let url = "http://localhost:8585/api/v1/toDos";
+        let url = "http://localhost:8585/api/v1/toDos/"+this.props.UserId;
         let getty = new XMLHttpRequest();
         getty.open('GET', url)
         getty.responseType = "json";

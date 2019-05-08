@@ -33,7 +33,7 @@ export default class AddTasks extends Component{
         posty.setRequestHeader("Accept", "application/json;charset=UTF-8");
         let addbody = {
             task: this.state.text,
-            userId: "1",
+            userId: this.props.UserId,
             taskId: "",
             dateAdded: "20190425",
             taskStatus: "true"
