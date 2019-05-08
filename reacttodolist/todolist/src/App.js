@@ -20,12 +20,9 @@ class App extends Component {
         console.log(this.state.appUserId)
     }
     
-    callback=(addyRefresh)=>{
-        console.log("callbackfunction")
-        console.log(this.state.refreshVar)
-        
+    callback = (passedrefreshvar) => {
    this.setState({
-       refreshVar:10+addyRefresh
+       refreshVar:passedrefreshvar
    })
     }
     render() {
@@ -53,7 +50,7 @@ class App extends Component {
             </div>
             <div>
                
-                <AddTasks refreshTrigger={this.callback} UserId={this.state.appUserId} />
+                <AddTasks callback={this.callback} UserId={this.state.appUserId} />
                 <GetTasks UserId={this.state.appUserId}/>
                
             </div>

@@ -5,7 +5,8 @@ export default class AddTasks extends Component{
         super(props);
         this.state={
             text:"",
-            arr:[]
+            arr:[],
+            addyRefresh:0
         }
     }
     textUpdater=(inp)=>{
@@ -14,7 +15,12 @@ export default class AddTasks extends Component{
         });
     }
     rand=()=>{
-        Math.floor(Math.random()*Math.floor(100));
+        let randomnum=(Math.floor(Math.random()*Math.floor(1000)))
+        this.setState({
+            addyRefresh:randomnum
+        })
+        console.log("addy ref after rand "+this.state.addyRefresh);
+        console.log("code for random number"+)
     }
     addy = () => {
         let arra = this.state.arr;
@@ -45,7 +51,10 @@ export default class AddTasks extends Component{
    postWrapper=()=>{
        this.addy();
        this.postTask();
-       this.props.refreshTrigger(this.rand());
+       this.rand();
+       console.log("this should trigger a refresh if addyrefresh aint 0");
+       console.log(this.state.addyRefresh);
+       this.props.callback(this.state.addyRefresh);
    }
 render(){
     return(
