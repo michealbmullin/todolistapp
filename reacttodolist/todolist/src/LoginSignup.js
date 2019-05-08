@@ -28,17 +28,13 @@ export default class LoginSignup extends Component{
             });
             console.log("userId retrieved")
             console.log (this.state.userId)
-            if (this.state.userId===0){
+            if (this.state.userId===0|this.state.userId===undefined){
                 window.alert("scuffed");
             }
-            this.props.setSeshUserId();
+            this.props.setAppUserId(this.state.userId);
         }
         verify.send(body);
     }
-    // submitEvent=(event)=>({
-    //    event.preventDefault();
-    //    this.verifyLogin();
-    //     })
     emailUpdater=(inp)=>{
         this.setState({
             subEmail:inp.target.value

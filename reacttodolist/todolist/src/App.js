@@ -9,36 +9,43 @@ class App extends Component {
         super(props);
         this.state={
             refreshVar:0,
-            seshuserid:0
+            appUserId:0
         }
     }
 
-    setSeshUserId = (seshuserid) => {
+    setAppUserId = (passedUsrId) => {
         this.setState({
-            seshuserid: seshuserid
+            appUserId:passedUsrId
         })
+        console.log(this.state.appUserId)
     }
     
     callback=(addyRefresh)=>{
+        console.log("callbackfunction")
         console.log(this.state.refreshVar)
+        
    this.setState({
        refreshVar:10+addyRefresh
    })
     }
-
     render() {
-        if (this.state.seshuserid===0){
+        console.log("render started the render")
+        console.log(this.state.appUserId)
+        if (this.state.appUserId==0){
+            console.log("userid invalid")
             return(
                 <div>
                     <h1>login page</h1>
                     <div>
-                    <LoginSignup setSeshUserId={this.setSeshUserId}/>
+                    <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
                 </div>
 
             )
 
         }else{
+            console.log("user id valid")
+            console.log(this.state.appUserId)
         return (
             <div>
             <div>
