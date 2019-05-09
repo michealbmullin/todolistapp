@@ -4,7 +4,6 @@ import TaskUpdater from './TaskUpdater';
 export default class GetTasks extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
            
             data: "",

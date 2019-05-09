@@ -7,7 +7,8 @@ export default class TaskUpdater extends Component {
         this.state={
             taskId:(this.props.taskPassId),
             statusState:"true",
-            text:(this.props.task)
+            text:(this.props.task),
+            buttonDisplay:"uncompleted"
         }
     }
 
@@ -32,28 +33,28 @@ export default class TaskUpdater extends Component {
         switch(this.state.statusState){
             case "true":
             this.setState({
-                statusState:"false" 
+                statusState:"false",
+                buttonDisplay:"completed"
             })
             break;
             case "false":
             this.setState({
-                statusState:"true"
+                statusState:"true",
+                buttonDisplay:"uncomplete"
             })
             break;
             default:
-            console.log("scuffed")
-                break;
+            break;
         }
-        }
-    
+    }
     updateWrap=()=>{
         this.changeStatus();
         this.updateStatus();
     }
 render (){
     return(
-            <button onClick={()=>{this.updateWrap(this.state.taskId)}}>
-                status {this.statusState}
+            <button id={this.state.buttonDisplay} onClick={()=>{this.updateWrap(this.state.taskId)}}>
+            {this.state.buttonDisplay}
             </button>
     )
     }
