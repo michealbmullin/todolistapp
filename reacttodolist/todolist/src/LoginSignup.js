@@ -46,7 +46,7 @@ export default class LoginSignup extends Component{
         })
     }
     userSignup=()=>{
-        let addyurl = "http://localhost:8585/api/v1/User";
+        let addyurl = "http://localhost:8585/api/v1/UserSignup";
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);
@@ -59,19 +59,32 @@ export default class LoginSignup extends Component{
         }
         signupbody= JSON.stringify(signupbody);
         posty.send(signupbody);
+        posty.onload=()=>{
+            if(posty.response==null){
+            alert("That username is already taken");
+            }
+            else{
+                alert("Login Succesfull");
+            }
+        }
     }
 
     render(){
         return(
             <div>
+                <div>
                 <h2>login</h2>
-            <form onSubmit={this.verifyLogin}>
+            <form>
                     <input type="email" key="emailaddress" placeholder="please enter your email adress" onChange={this.emailUpdater}/>
                     <input type="password" key="password" placeholder="please enter your password" onChange={this.passUpdater}/>
-                    <input type="submit"/>
+                    <button type="button" onClick={this.verifyLogin}>login</button>
+                    <button type="button" onClick={this.userSignup}> signup</button>
             </form>
+            </div>
             <div>
-                placeholder for signup
+               <h2>signup</h2>
+               <form>
+               </form>
             </div>
             </div>
         )

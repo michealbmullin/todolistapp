@@ -24,9 +24,14 @@ public class UserController {
 	        return userRepository.findAll();
 	    }
 		@RequestMapping(value = "UserSignup", method = RequestMethod.POST)
-	    public User create(@RequestBody User User){
-	        return userRepository.saveAndFlush(User);
+	    public User create(@RequestBody User user){
+			User userCheck =userRepository.findByEmail(user.getEmail());
+			if (userCheck!=null) {
+	        return null;
+	    }else {
+	    	return userRepository.saveAndFlush(user);
 	    }
+		}
 		@RequestMapping(value = "User/validate", method = RequestMethod.POST)
 	    public Long findByEmailAndPassword(@RequestBody User user){
 			List<User> matchedCredentials = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());

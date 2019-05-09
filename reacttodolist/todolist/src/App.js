@@ -17,7 +17,6 @@ class App extends Component {
         this.setState({
             appUserId:passedUsrId
         })
-        console.log(this.state.appUserId)
     }
     
     callback = (passedrefreshvar) => {
