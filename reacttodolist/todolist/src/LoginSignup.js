@@ -72,20 +72,12 @@ export default class LoginSignup extends Component{
     render(){
         return(
             <div>
-                <div>
-                <h2>login</h2>
             <form>
-                    <input type="email" key="emailaddress" placeholder="please enter your email adress" onChange={this.emailUpdater}/>
-                    <input type="password" key="password" placeholder="please enter your password" onChange={this.passUpdater}/>
-                    <button type="button" onClick={this.verifyLogin}>login</button>
-                    <button type="button" onClick={this.userSignup}> signup</button>
+                    <input type="email" key="emailaddress" className="input" placeholder="please enter your email adress" onChange={this.emailUpdater}/>
+                    <input type="password" key="password" className="input" placeholder="please enter your password" onChange={this.passUpdater}/>
+                    <button type="button" className="button" onClick={this.verifyLogin}>login</button>
+                    <button type="button" className="button" onClick={this.userSignup}> signup</button>
             </form>
-            </div>
-            <div>
-               <h2>signup</h2>
-               <form>
-               </form>
-            </div>
             </div>
         )
     }

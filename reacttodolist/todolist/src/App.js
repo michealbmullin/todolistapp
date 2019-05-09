@@ -25,13 +25,13 @@ class App extends Component {
    })
     }
     render() {
-        console.log("render started the render")
+        console.log("started the app render")
         console.log(this.state.appUserId)
         if (this.state.appUserId==0){
             console.log("userid invalid")
             return(
                 <div>
-                    <h1>login page</h1>
+                    <h1 id="loginHeader">login or Signup</h1>
                     <div>
                     <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
@@ -48,13 +48,8 @@ class App extends Component {
             <h1 > Todays tasks </h1>
             </div>
             <div>
-               
                 <AddTasks callback={this.callback} UserId={this.state.appUserId} />
                 <GetTasks UserId={this.state.appUserId}/>
-               
-            </div>
-            <div>
-
             </div>
             </div>
               

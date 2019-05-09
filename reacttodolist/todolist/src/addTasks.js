@@ -58,8 +58,8 @@ export default class AddTasks extends Component{
 render(){
     return(
         <div>
-        <input type="text" onChange={this.textUpdater}/>
-        <button type="button" onClick={this.postWrapper} >add tasks</button>
+        <input type="text" id="addTaskBar" onChange={this.textUpdater}/>
+        <button type="button" id="addTaskButton" onClick={this.postWrapper} >add tasks</button>
     {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)}
         </div>
     );
