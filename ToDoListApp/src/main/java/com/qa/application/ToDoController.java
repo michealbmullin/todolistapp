@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.qa.models.ToDos;
+import com.qa.application.ToDos;
 
 @RestController
 @RequestMapping("api/v1/")
@@ -27,9 +27,10 @@ public class ToDoController {
     public ToDos create(@RequestBody ToDos ToDos){
         return toDoRepository.saveAndFlush(ToDos);
     }
-	@RequestMapping(value = "toDos/{taskId}", method = RequestMethod.GET)
-    public ToDos get(@PathVariable Long id){
-        return toDoRepository.findOne(id);
+	@RequestMapping(value = "toDos/{userId}", method = RequestMethod.GET)
+    public List<ToDos> getByUserId(@PathVariable Long userId){
+		return toDoRepository.findByUserId(userId);
+    
     }
 	@RequestMapping(value = "toDos//{id}", method = RequestMethod.PUT)
     public ToDos update(@PathVariable Long id, @RequestBody ToDos ToDos){

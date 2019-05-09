@@ -2,6 +2,7 @@ package com.qa.application;
 
 import java.util.List;
 
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,21 +23,32 @@ public class UserController {
 	    public List<User> list(){
 	        return userRepository.findAll();
 	    }
-		@RequestMapping(value = "User", method = RequestMethod.POST)
-	    public User create(@RequestBody User User){
-	        return userRepository.saveAndFlush(User);
+		@RequestMapping(value = "UserSignup", method = RequestMethod.POST)
+	    public User create(@RequestBody User user){
+			User userCheck =userRepository.findByEmail(user.getEmail());
+			if (userCheck!=null) {
+	        return null;
+	    }else {
+	    	return userRepository.saveAndFlush(user);
 	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.GET)
-	    public User get(@PathVariable Long id){
-	        return userRepository.findOne(id);
-	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.PUT)
+		}
+		@RequestMapping(value = "User/validate", method = RequestMethod.POST)
+	    public Long findByEmailAndPassword(@RequestBody User user){
+			List<User> matchedCredentials = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+			if (matchedCredentials.isEmpty()){
+				return 0L;
+			}else {
+	        	 Long backendId = matchedCredentials.get(0).getUserId();
+	        	return backendId;
+			}
+		}
+		@RequestMapping(value = "User/{userId}", method = RequestMethod.PUT)
 	    public User update(@PathVariable Long id, @RequestBody User User){
 	        User existingUser = userRepository.findOne(id);
 	        BeanUtils.copyProperties(User, existingUser);
 	        return userRepository.saveAndFlush(User);
 	    }
-		@RequestMapping(value = "User/{taskId}", method = RequestMethod.DELETE)
+		@RequestMapping(value = "User/{userId}", method = RequestMethod.DELETE)
 	    public User delete(@PathVariable Long id){
 	        User existingUser = userRepository.findOne(id);
 	        userRepository.delete(existingUser);

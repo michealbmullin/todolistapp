@@ -6,14 +6,16 @@ export default class GetTasks extends Component {
         super(props);
 
         this.state = {
+           
             data: "",
             datArr: [],
             updatevar:0
         }
     }
-
     getTasks = () => {
-        let url = "http://localhost:8585/api/v1/toDos";
+        console.log("in gettasks");
+        console.log(this.props.UserId)
+        let url = "http://localhost:8585/api/v1/toDos/"+this.props.UserId;
         let getty = new XMLHttpRequest();
         getty.open('GET', url)
         getty.responseType = "json";
@@ -27,7 +29,10 @@ export default class GetTasks extends Component {
     }
 
     componentDidMount = () => {
+        console.log("componenetdidmount")
+        console.log(this.props.UserId)
         this.getTasks();
+
     }
     deleteTask=(taskId)=>{
         let url="http://localhost:8585/api/v1/toDos/"+taskId;
