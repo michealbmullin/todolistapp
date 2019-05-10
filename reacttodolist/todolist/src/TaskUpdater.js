@@ -26,9 +26,6 @@ export default class TaskUpdater extends Component {
             dateAdded: "yet to be sorted",
             taskStatus: (this.state.statusState)
         }
-        console.log(this.state.statusState)
-        console.log(this.state.taskId+"current task id")
-        console.log(updatebody.task)
         updatebody=JSON.stringify(updatebody);
         updaty.send(updatebody);
     }
