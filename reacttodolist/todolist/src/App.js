@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddTasks from './addTasks';
 import GetTasks from './GetTasks';
 import LoginSignup from './LoginSignup';
+import './Main.css';
 
 class App extends Component {
     constructor(props){
@@ -29,9 +30,9 @@ class App extends Component {
         if (this.state.appUserId==0){
             console.log("userid invalid")
             return(
-                <div>
-                    <h1 id="loginHeader">login or Signup</h1>
-                    <div>
+                <div className="pageBody">
+                    <h1 id="loginHeader" className="font">Welcome to todos</h1>
+                    <div id="signInWrap">
                     <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
                 </div>
@@ -42,9 +43,9 @@ class App extends Component {
             console.log("user id valid")
             console.log(this.state.appUserId)
         return (
+            <div className="pageBody">
             <div>
-            <div>
-            <h1 > Todays tasks </h1>
+            <h1 id="taskHeader" className="font"> Todays tasks </h1>
             </div>
             <div>
                 <AddTasks callback={this.callback} UserId={this.state.appUserId} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Connection} from './Constants';
+import './Main.css';
 
 export default class AddTasks extends Component{
     constructor(props){
@@ -16,7 +17,6 @@ export default class AddTasks extends Component{
         });
     }
     rand=(inp)=>{
-        
         this.setState({
             addyRefresh:inp
         })
@@ -28,7 +28,6 @@ export default class AddTasks extends Component{
         this.setState({
             arr:arra
         });
-
     }
     postTask=()=>{
         let addyurl = `${Connection}8585/api/v1/addtoDos`;

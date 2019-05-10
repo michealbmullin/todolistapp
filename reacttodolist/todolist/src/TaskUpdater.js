@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Connection} from './Constants';
+import './Main.css';
 
 export default class TaskUpdater extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ export default class TaskUpdater extends Component {
             updUserId:this.props.UserId
         }
     }
-
+    
     updateStatus=()=>{
         let url = `${Connection}8585/api/v1/toDos//`+this.state.taskId;
         let updaty= new XMLHttpRequest();

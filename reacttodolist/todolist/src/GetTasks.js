@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskUpdater from './TaskUpdater';
 import {Connection} from './Constants';
+import './Main.css';
 
 export default class GetTasks extends Component {
     constructor(props) {

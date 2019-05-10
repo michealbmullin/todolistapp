@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Connection} from './Constants';
+import './Main.css';
 
 export default class LoginSignup extends Component{
     constructor(props){
@@ -73,11 +74,14 @@ export default class LoginSignup extends Component{
     render(){
         return(
             <div>
-            <form>
-                    <input type="email" key="emailaddress" className="input" placeholder="please enter your email adress" onChange={this.emailUpdater}/>
-                    <input type="password" key="password" className="input" placeholder="please enter your password" onChange={this.passUpdater}/>
-                    <button type="button" className="button" onClick={this.verifyLogin}>login</button>
-                    <button type="button" className="button" onClick={this.userSignup}> signup</button>
+            <form id="loginForm">
+                    <input type="email" key="emailaddress" className="input" placeholder=" Email " onChange={this.emailUpdater}/>
+                    <br/>
+                    <input type="password" key="password" className="input" placeholder=" password " onChange={this.passUpdater}/>
+                    <br/>
+                    <button type="button" className="button font input" onClick={this.verifyLogin}>login</button>
+                    <br/>
+                    <button type="button" className="button font input" onClick={this.userSignup}> signup</button>
             </form>
             </div>
         )
