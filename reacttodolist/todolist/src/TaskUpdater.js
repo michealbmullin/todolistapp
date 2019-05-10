@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Connection} from './Constants';
 
 export default class TaskUpdater extends Component {
     constructor(props){
@@ -8,24 +8,27 @@ export default class TaskUpdater extends Component {
             taskId:(this.props.taskPassId),
             statusState:"true",
             text:(this.props.task),
-            buttonDisplay:"uncompleted"
+            buttonDisplay:"uncompleted",
+            updUserId:this.props.UserId
         }
     }
 
     updateStatus=()=>{
-        let url = "http://localhost:8585/api/v1/toDos//"+this.state.taskId;
+        let url = `${Connection}8585/api/v1/toDos//`+this.state.taskId;
         let updaty= new XMLHttpRequest();
         updaty.open("put", url);
         updaty.setRequestHeader("Content-Type", "application/json");
         updaty.responseType="json";
         let updatebody={
             task: (this.state.text),
-            userId: "1",
+            userId: this.state.updUserId,
             taskId: (this.state.taskId),
             dateAdded: "yet to be sorted",
             taskStatus: (this.state.statusState)
         }
         console.log(this.state.statusState)
+        console.log(this.state.taskId+"current task id")
+        console.log(updatebody.task)
         updatebody=JSON.stringify(updatebody);
         updaty.send(updatebody);
     }

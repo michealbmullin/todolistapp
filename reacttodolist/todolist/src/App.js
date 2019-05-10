@@ -3,7 +3,6 @@ import AddTasks from './addTasks';
 import GetTasks from './GetTasks';
 import LoginSignup from './LoginSignup';
 
-
 class App extends Component {
     constructor(props){
         super(props);

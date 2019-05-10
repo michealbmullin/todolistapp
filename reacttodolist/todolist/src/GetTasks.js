@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TaskUpdater from './TaskUpdater';
+import {Connection} from './Constants';
 
 export default class GetTasks extends Component {
     constructor(props) {
@@ -8,13 +9,14 @@ export default class GetTasks extends Component {
            
             data: "",
             datArr: [],
-            updatevar:0
+            updatevar:0,
+            getUserId:this.props.UserId
         }
     }
     getTasks = () => {
         console.log("in gettasks");
         console.log(this.props.UserId)
-        let url = "http://localhost:8585/api/v1/toDos/"+this.props.UserId;
+        let url = `${Connection}8585/api/v1/toDos/`+this.props.UserId;
         let getty = new XMLHttpRequest();
         getty.open('GET', url)
         getty.responseType = "json";
@@ -34,7 +36,7 @@ export default class GetTasks extends Component {
 
     }
     deleteTask=(taskId)=>{
-        let url="http://localhost:8585/api/v1/toDos/"+taskId;
+        let url=`${Connection}8585/api/v1/toDos/`+taskId;
         console.log({taskId})
         let delety= new XMLHttpRequest();
         delety.open("delete",url);
@@ -49,7 +51,7 @@ export default class GetTasks extends Component {
 
     render() {
         let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId}> {d.task} <button onClick={()=>{this.deleteTask(d.taskId)}}> delete </button>
-        <TaskUpdater task={d.task} taskPassId={d.taskId}/>
+        <TaskUpdater task={d.task} taskPassId={d.taskId} UserId={this.state.getUserId} />
         </p>);
         return (
             <div>

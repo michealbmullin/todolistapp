@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Connection} from './Constants';
 
 export default class LoginSignup extends Component{
     constructor(props){
@@ -12,7 +13,7 @@ export default class LoginSignup extends Component{
     }
     verifyLogin=(e)=>{
         e.preventDefault();
-        let url = "http://localhost:8585/api/v1/User/validate"
+        let url = `${Connection}8585/api/v1/User/validate`
         let verify = new XMLHttpRequest();
         verify.open('post', url)
         verify.setRequestHeader("Content-Type", "application/json");
@@ -29,7 +30,7 @@ export default class LoginSignup extends Component{
             console.log("userId retrieved")
             console.log (this.state.userId)
             if (this.state.userId===0|this.state.userId===undefined){
-                window.alert("scuffed");
+                alert("Unsuccessful login");
             }
             this.props.setAppUserId(this.state.userId);
         }
@@ -46,7 +47,7 @@ export default class LoginSignup extends Component{
         })
     }
     userSignup=()=>{
-        let addyurl = "http://localhost:8585/api/v1/UserSignup";
+        let addyurl = `${Connection}8585/api/v1/UserSignup`;
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);

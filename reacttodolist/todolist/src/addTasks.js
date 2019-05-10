@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Connection} from './Constants';
 
 export default class AddTasks extends Component{
     constructor(props){
@@ -30,7 +31,7 @@ export default class AddTasks extends Component{
 
     }
     postTask=()=>{
-        let addyurl = "http://localhost:8585/api/v1/addtoDos";
+        let addyurl = `${Connection}8585/api/v1/addtoDos`;
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);
