@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Connection} from './Constants';
 import './Main.css';
 
+
 export default class AddTasks extends Component{
     constructor(props){
         super(props);
@@ -17,7 +18,8 @@ export default class AddTasks extends Component{
         });
     }
     rand=(inp)=>{
-        let varnumber=inp+Math.random();
+        console.log("add refresh before rand func"+this.state.addyRefresh);
+        let varnumber=inp+this.state.addyRefresh;
         this.setState({
             addyRefresh:varnumber
         })
@@ -53,7 +55,7 @@ export default class AddTasks extends Component{
        this.postTask();
        console.log(this.state.addyRefresh+"addyrefresh before rand function")
        this.rand(1);
-       console.log("this should trigger a refresh if addyrefresh aint 0");
+       console.log("this should trigger a refresh if addyrefresh aint 1");
        console.log(this.state.addyRefresh);
        this.props.callback(this.state.addyRefresh);
    }
@@ -63,8 +65,7 @@ render(){
             <form>
         <input type="text" id="addTaskBar" onChange={this.textUpdater}/>
         <button type="button" id="addTaskButton" className="button font" onClick={this.postWrapper} >add tasks</button>
-        <input type="date"></input>
-    {/* {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)} */}
+    {/* {this.state.arr.map((arr,i) => <p key={"task"+i} className="tasksBox font">{arr}</p>)} */}
             </form>
         </div>
     );

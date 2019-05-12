@@ -21,6 +21,21 @@ class App extends Component {
    this.setState({
        refreshVar:passedrefreshvar
    })
+   console.log("refresh var in app "+this.state.refreshVar)
+    }
+    varfresher=()=>{
+        this.setState({
+            passedRefVar:this.props.refreshVar
+        })
+    }
+    
+    componentDidUpdate=(prevProp,prevState)=>{
+        if(this.state.refreshVar!==prevState.refreshVar){
+            this.refs.child.getTasks(); 
+            console.log("calling get tasks");
+        }else{
+        console.log("didnt call get tasks");
+        }
     }
     render() {
         if (this.state.appUserId==0){
@@ -37,7 +52,7 @@ class App extends Component {
 
         }else{
             console.log("user id valid this.state.appUserId")
-            console.log("refreshvar "+this.state.refreshVar)
+            console.log("refreshvar in gettasks render "+this.state.refreshVar)
         return (
             <div className="pageBody">
             <div>
@@ -45,7 +60,7 @@ class App extends Component {
             </div>
             <div id="tasksBlock" className="maxWidthWrap">
                 <AddTasks id="addTaskField" callback={this.callback} UserId={this.state.appUserId} />
-                <GetTasks UserId={this.state.appUserId} refreshVar={this.state.refreshVar}/>
+                <GetTasks UserId={this.state.appUserId} refreshVar={this.state.refreshVar} varfresher={this.varfresher} ref="child"/>
             </div>
             </div>
               

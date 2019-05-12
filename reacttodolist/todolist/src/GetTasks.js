@@ -12,8 +12,19 @@ export default class GetTasks extends Component {
             datArr: [],
             updatevar:0,
             getUserId:this.props.UserId,
-            passedRefVar:this.props.refreshVar,
+            passedRefVar:0,
             renderTrig:0
+        }
+    }
+    componentDidUpdate=(prevProp,prevState)=>{
+        if(this.state.passedRefVar!==prevState.passedRefVar){
+            this.getTasks(); 
+            console.log(this.state.passedRefVar)
+            console.log("rerun gets tasks if passed revar changes")
+        }else{
+        console.log("didnt rerender")
+        console.log(prevState.passedRefVar+"previous state")
+        console.log(this.state.passedRefVar+"current")
         }
     }
     getTasks = () => {
@@ -25,7 +36,7 @@ export default class GetTasks extends Component {
         getty.responseType = "json";
         getty.onload = () => {
             this.setState({
-                datArr: getty.response
+                datArr: getty.response,
             });
 
         }
@@ -38,7 +49,9 @@ export default class GetTasks extends Component {
     componentDidMount = () => {
         console.log(this.props.UserId+"current user id");
         this.getTasks();
-
+        this.setState({
+            passedRefVar:this.props.refreshVar
+        })
     }
     deleteTask=(taskId)=>{
         let url=`${Connection}8585/api/v1/toDos/`+taskId;
@@ -50,12 +63,11 @@ export default class GetTasks extends Component {
        
         delety.onload=()=>{
             console.log("entry deleted");
+            this.getTasks();
+            this.forceUpdate();
         }
         delety.send();
-        console.log("force render on del")
-        this.forceUpdate();
-        console.log("checking rendertrigvalue "+this.state.renderTrig)
-        this.getTasks();
+        
     }
 
     render() {
