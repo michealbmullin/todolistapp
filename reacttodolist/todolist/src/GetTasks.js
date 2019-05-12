@@ -16,15 +16,13 @@ export default class GetTasks extends Component {
             renderTrig:0
         }
     }
-    componentDidUpdate=(prevProp,prevState)=>{
-        if(this.state.passedRefVar!==prevState.passedRefVar){
+    componentDidUpdate=(nextProp,nextState)=>{
+        if(this.state.passedRefVar!==nextState.passedRefVar){
             this.getTasks(); 
             console.log(this.state.passedRefVar)
             console.log("rerun gets tasks if passed revar changes")
         }else{
         console.log("didnt rerender")
-        console.log(prevState.passedRefVar+"previous state")
-        console.log(this.state.passedRefVar+"current")
         }
     }
     getTasks = () => {

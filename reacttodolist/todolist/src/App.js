@@ -21,12 +21,16 @@ class App extends Component {
    this.setState({
        refreshVar:passedrefreshvar
    })
+   
    console.log("refresh var in app "+this.state.refreshVar)
+   this.forceUpdate();
     }
+
     varfresher=()=>{
         this.setState({
             passedRefVar:this.props.refreshVar
         })
+        this.forceUpdate();
     }
     
     componentDidUpdate=(prevProp,prevState)=>{
