@@ -60,7 +60,7 @@ render(){
         <div>
             <form>
         <input type="text" id="addTaskBar" onChange={this.textUpdater}/>
-        <button type="button" id="addTaskButton" onClick={this.postWrapper} >add tasks</button>
+        <button type="button" id="addTaskButton" className="button font" onClick={this.postWrapper} >add tasks</button>
         <input type="date"></input>
     {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)}
             </form>

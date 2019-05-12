@@ -12,13 +12,11 @@ class App extends Component {
             appUserId:0
         }
     }
-
     setAppUserId = (passedUsrId) => {
         this.setState({
             appUserId:passedUsrId
         })
     }
-    
     callback = (passedrefreshvar) => {
    this.setState({
        refreshVar:passedrefreshvar
@@ -31,12 +29,11 @@ class App extends Component {
             console.log("userid invalid")
             return(
                 <div className="pageBody">
-                    <h1 id="loginHeader" className="font">Welcome to todos</h1>
-                    <div id="signInWrap">
+                    <h1 id="loginHeader" className="font header">Welcome to todos</h1>
+                    <div id="signInWrap" className="maxWidthWrap">
                     <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
                 </div>
-
             )
 
         }else{
@@ -45,10 +42,10 @@ class App extends Component {
         return (
             <div className="pageBody">
             <div>
-            <h1 id="taskHeader" className="font"> Todays tasks </h1>
+            <h1 id="taskHeader" className="font header"> Todays tasks </h1>
             </div>
-            <div>
-                <AddTasks callback={this.callback} UserId={this.state.appUserId} />
+            <div id="tasksBlock" className="maxWidthWrap">
+                <AddTasks id="addTaskField" callback={this.callback} UserId={this.state.appUserId} />
                 <GetTasks UserId={this.state.appUserId}/>
             </div>
             </div>

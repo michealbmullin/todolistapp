@@ -66,7 +66,7 @@ export default class LoginSignup extends Component{
             alert("That username is already taken");
             }
             else{
-                alert("Login Succesfull");
+                alert("signup Succesfull");
             }
         }
     }

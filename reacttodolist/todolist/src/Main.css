@@ -1,7 +1,7 @@
-#loginHeader {
+.header {
     background-color: aquamarine;
     border-style: solid;
-    border-color: black;
+    border-color: darkslategray;
     text-align: center;
     border-width: 2px;
 }
@@ -13,30 +13,66 @@
 
 #loginForm {
     display: block;
-    margin: auto;
+    margin: 10px;
     margin-top: 5%;
     align-content: center;
     text-align: center;
     border-style: solid;
-    border-color: black;
+    border-color:darkslategray;
     border-width: 1px;
     background-color: aquamarine;
+    padding:12%;
 }
-
-.input {
-    size: 10%;
-    margin-top: 5%;
-    font-size: 24px;
-}
-
 ::-webkit-input-placeholder {
     text-align: center;
 }
 
-#signInWrap {
+.maxWidthWrap {
     align-items: center;
     text-align: center;
-    padding-left: 42%;
-    padding-right: 50%;
+    margin-left: auto;
+    margin-right:auto;
     width: max-content;
+}
+.pageBody{
+    text-align: center
+}
+.button{
+    border-radius: 30%;
+    border-style: solid;
+    border-color: darkslategray;
+    border-width:1px;
+    font-size: 15px;
+}
+#completed{
+    background-color: green;
+}
+#incomplete{
+    background-color:red;
+}
+.tasksBox{
+    background-color: whitesmoke;
+    border-style: solid;
+    border-color:darkcyan;
+    border-width: 1px;
+    padding:5px;
+    font-size: 24px;
+}
+#tasksBlock{
+    background-color: aquamarine;
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+    text-align: center;
+    width:max-content;
+    display:block;
+    padding:1%;
+}
+#addTasksField{
+    padding:10%
+}
+.input {
+    size: 10%;
+    margin-top: 5%;
+    font-size: 24px;
 }

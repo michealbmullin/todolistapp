@@ -41,7 +41,7 @@ export default class TaskUpdater extends Component {
             case "false":
             this.setState({
                 statusState:"true",
-                buttonDisplay:"uncomplete"
+                buttonDisplay:"incomplete"
             })
             break;
             default:
@@ -54,7 +54,7 @@ export default class TaskUpdater extends Component {
     }
 render (){
     return(
-            <button id={this.state.buttonDisplay} onClick={()=>{this.updateWrap(this.state.taskId)}}>
+            <button className="button font updateBut"id={this.state.buttonDisplay} onClick={()=>{this.updateWrap(this.state.taskId)}}>
             {this.state.buttonDisplay}
             </button>
     )
