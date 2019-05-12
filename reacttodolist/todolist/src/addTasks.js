@@ -8,7 +8,7 @@ export default class AddTasks extends Component{
         this.state={
             text:"",
             arr:[],
-            addyRefresh:0
+            addyRefresh:1
         }
     }
     textUpdater=(inp)=>{
@@ -17,8 +17,9 @@ export default class AddTasks extends Component{
         });
     }
     rand=(inp)=>{
+        let varnumber=inp+Math.random();
         this.setState({
-            addyRefresh:inp
+            addyRefresh:varnumber
         })
         console.log("addy ref after rand "+this.state.addyRefresh);
     }
@@ -40,7 +41,7 @@ export default class AddTasks extends Component{
             task: this.state.text,
             userId: this.props.UserId,
             taskId: "",
-            dateAdded: "20190425",
+            dateAdded: "13/05/2019",
             taskStatus: "true"
         }
         addbody = JSON.stringify(addbody);
@@ -50,6 +51,7 @@ export default class AddTasks extends Component{
    postWrapper=()=>{
        this.addy();
        this.postTask();
+       console.log(this.state.addyRefresh+"addyrefresh before rand function")
        this.rand(1);
        console.log("this should trigger a refresh if addyrefresh aint 0");
        console.log(this.state.addyRefresh);
@@ -62,7 +64,7 @@ render(){
         <input type="text" id="addTaskBar" onChange={this.textUpdater}/>
         <button type="button" id="addTaskButton" className="button font" onClick={this.postWrapper} >add tasks</button>
         <input type="date"></input>
-    {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)}
+    {/* {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)} */}
             </form>
         </div>
     );

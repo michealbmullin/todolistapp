@@ -23,10 +23,9 @@ class App extends Component {
    })
     }
     render() {
-        console.log("started the app render")
-        console.log(this.state.appUserId)
         if (this.state.appUserId==0){
             console.log("userid invalid")
+            console.log("refreshvar "+this.state.refreshVar)
             return(
                 <div className="pageBody">
                     <h1 id="loginHeader" className="font header">Welcome to todos</h1>
@@ -37,8 +36,8 @@ class App extends Component {
             )
 
         }else{
-            console.log("user id valid")
-            console.log(this.state.appUserId)
+            console.log("user id valid this.state.appUserId")
+            console.log("refreshvar "+this.state.refreshVar)
         return (
             <div className="pageBody">
             <div>
@@ -46,12 +45,13 @@ class App extends Component {
             </div>
             <div id="tasksBlock" className="maxWidthWrap">
                 <AddTasks id="addTaskField" callback={this.callback} UserId={this.state.appUserId} />
-                <GetTasks UserId={this.state.appUserId}/>
+                <GetTasks UserId={this.state.appUserId} refreshVar={this.state.refreshVar}/>
             </div>
             </div>
               
         )
     }
+    
 }
 
 

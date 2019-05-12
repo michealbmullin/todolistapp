@@ -24,7 +24,7 @@ export default class TaskUpdater extends Component {
             task: (this.state.text),
             userId: this.state.updUserId,
             taskId: (this.state.taskId),
-            dateAdded: "yet to be sorted",
+            dateAdded: "",
             taskStatus: (this.state.statusState)
         }
         updatebody=JSON.stringify(updatebody);
@@ -51,6 +51,7 @@ export default class TaskUpdater extends Component {
     updateWrap=()=>{
         this.changeStatus();
         this.updateStatus();
+        this.props.reGetOnUpdate();
     }
 render (){
     return(
