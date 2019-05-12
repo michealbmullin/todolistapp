@@ -12,6 +12,7 @@
 }
 
 #loginForm {
+    min-width: 20%;
     display: block;
     margin: 10px;
     margin-top: 5%;
@@ -59,6 +60,7 @@
     font-size: 24px;
 }
 #tasksBlock{
+    /* min-width: 20%; */
     background-color: aquamarine;
     border-style: solid;
     border-color:black;
