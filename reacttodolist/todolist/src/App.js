@@ -35,7 +35,7 @@ class App extends Component {
             console.log("userid invalid")
             return(
                 <div className="pageBody">
-                    <h1 id="loginHeader" className="font header">Welcome to todos</h1>
+                    <h1 id="loginHeader" className="font header">Welcome to todo's</h1>
                     <div id="signInWrap" className="maxWidthWrap">
                     <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
