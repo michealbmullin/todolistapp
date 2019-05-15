@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {Connection} from './Constants';
+import './Main.css';
+
 
 export default class AddTasks extends Component{
     constructor(props){
@@ -6,7 +9,7 @@ export default class AddTasks extends Component{
         this.state={
             text:"",
             arr:[],
-            addyRefresh:0
+            addyRefresh:1
         }
     }
     textUpdater=(inp)=>{
@@ -15,9 +18,10 @@ export default class AddTasks extends Component{
         });
     }
     rand=(inp)=>{
-        
+        console.log("add refresh before rand func"+this.state.addyRefresh);
+        let varnumber=inp+this.state.addyRefresh;
         this.setState({
-            addyRefresh:inp
+            addyRefresh:varnumber
         })
         console.log("addy ref after rand "+this.state.addyRefresh);
     }
@@ -27,10 +31,9 @@ export default class AddTasks extends Component{
         this.setState({
             arr:arra
         });
-
     }
     postTask=()=>{
-        let addyurl = "http://localhost:8585/api/v1/addtoDos";
+        let addyurl = `${Connection}8585/api/v1/addtoDos`;
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);
@@ -40,7 +43,7 @@ export default class AddTasks extends Component{
             task: this.state.text,
             userId: this.props.UserId,
             taskId: "",
-            dateAdded: "20190425",
+            dateAdded: "13/05/2019",
             taskStatus: "true"
         }
         addbody = JSON.stringify(addbody);
@@ -50,17 +53,20 @@ export default class AddTasks extends Component{
    postWrapper=()=>{
        this.addy();
        this.postTask();
+       console.log(this.state.addyRefresh+"addyrefresh before rand function")
        this.rand(1);
-       console.log("this should trigger a refresh if addyrefresh aint 0");
+       console.log("this should trigger a refresh if addyrefresh aint 1");
        console.log(this.state.addyRefresh);
        this.props.callback(this.state.addyRefresh);
    }
 render(){
     return(
         <div>
+            <form>
         <input type="text" id="addTaskBar" onChange={this.textUpdater}/>
-        <button type="button" id="addTaskButton" onClick={this.postWrapper} >add tasks</button>
-    {this.state.arr.map((arr,i) => <p key={"task"+i}>{arr}</p>)}
+        <button type="button" id="addTaskButton" className="button font" onClick={this.postWrapper} >add tasks</button>
+    {/* {this.state.arr.map((arr,i) => <p key={"task"+i} className="tasksBox font">{arr}</p>)} */}
+            </form>
         </div>
     );
     }

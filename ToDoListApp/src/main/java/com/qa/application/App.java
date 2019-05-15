@@ -11,9 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class App {
     public static void main( String[] args ){
-    	logger.debug("Starting application");
+    	LOGGER.debug("Starting application");
     	SpringApplication.run(App.class, args);
     }
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     
 	}

@@ -1,0 +1,80 @@
+.header {
+    background-color: aquamarine;
+    border-style: solid;
+    border-color: darkslategray;
+    text-align: center;
+    border-width: 2px;
+}
+
+.font {
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+#loginForm {
+    min-width: 20%;
+    display: block;
+    margin: 10px;
+    margin-top: 5%;
+    align-content: center;
+    text-align: center;
+    border-style: solid;
+    border-color:darkslategray;
+    border-width: 1px;
+    background-color: aquamarine;
+    padding:12%;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.maxWidthWrap {
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+    width: max-content;
+}
+.pageBody{
+    text-align: center
+}
+.button{
+    border-radius: 30%;
+    border-style: solid;
+    border-color: darkslategray;
+    border-width:1px;
+    font-size: 15px;
+}
+#completed{
+    background-color: green;
+}
+#incomplete{
+    background-color:red;
+}
+.tasksBox{
+    background-color: whitesmoke;
+    border-style: solid;
+    border-color:darkcyan;
+    border-width: 1px;
+    padding:5px;
+    font-size: 24px;
+}
+#tasksBlock{
+    /* min-width: 20%; */
+    background-color: aquamarine;
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+    text-align: center;
+    width:max-content;
+    display:block;
+    padding:1%;
+}
+#addTasksField{
+    padding:10%
+}
+.input {
+    size: 10%;
+    margin-top: 5%;
+    font-size: 24px;
+}

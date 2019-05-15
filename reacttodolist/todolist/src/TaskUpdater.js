@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Connection} from './Constants';
+import './Main.css';
 
 export default class TaskUpdater extends Component {
     constructor(props){
@@ -7,24 +8,25 @@ export default class TaskUpdater extends Component {
         this.state={
             taskId:(this.props.taskPassId),
             statusState:"true",
-            text:(this.props.task)
+            text:(this.props.task),
+            buttonDisplay:"uncompleted",
+            updUserId:this.props.UserId
         }
     }
-
+    
     updateStatus=()=>{
-        let url = "http://localhost:8585/api/v1/toDos//"+this.state.taskId;
+        let url = `${Connection}8585/api/v1/toDos//`+this.state.taskId;
         let updaty= new XMLHttpRequest();
         updaty.open("put", url);
         updaty.setRequestHeader("Content-Type", "application/json");
         updaty.responseType="json";
         let updatebody={
             task: (this.state.text),
-            userId: "1",
+            userId: this.state.updUserId,
             taskId: (this.state.taskId),
-            dateAdded: "yet to be sorted",
+            dateAdded: "",
             taskStatus: (this.state.statusState)
         }
-        console.log(this.state.statusState)
         updatebody=JSON.stringify(updatebody);
         updaty.send(updatebody);
     }
@@ -32,28 +34,29 @@ export default class TaskUpdater extends Component {
         switch(this.state.statusState){
             case "true":
             this.setState({
-                statusState:"false" 
+                statusState:"false",
+                buttonDisplay:"completed"
             })
             break;
             case "false":
             this.setState({
-                statusState:"true"
+                statusState:"true",
+                buttonDisplay:"incomplete"
             })
             break;
             default:
-            console.log("scuffed")
-                break;
+            break;
         }
-        }
-    
+    }
     updateWrap=()=>{
         this.changeStatus();
         this.updateStatus();
+        this.props.reGetOnUpdate();
     }
 render (){
     return(
-            <button onClick={()=>{this.updateWrap(this.state.taskId)}}>
-                status {this.statusState}
+            <button className="button font updateBut"id={this.state.buttonDisplay} onClick={()=>{this.updateWrap(this.state.taskId)}}>
+            {this.state.buttonDisplay}
             </button>
     )
     }

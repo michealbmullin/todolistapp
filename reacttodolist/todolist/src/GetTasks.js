@@ -1,41 +1,58 @@
 import React, { Component } from 'react';
 import TaskUpdater from './TaskUpdater';
+import {Connection} from './Constants';
+import './Main.css';
 
 export default class GetTasks extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
            
             data: "",
             datArr: [],
-            updatevar:0
+            updatevar:0,
+            getUserId:this.props.UserId,
+            passedRefVar:0,
+            renderTrig:0
+        }
+    }
+    componentDidUpdate=(nextProp,nextState)=>{
+        if(this.state.passedRefVar!==nextState.passedRefVar){
+            this.getTasks(); 
+            console.log(this.state.passedRefVar)
+            console.log("rerun gets tasks if passed revar changes")
+        }else{
+        console.log("didnt rerender")
         }
     }
     getTasks = () => {
         console.log("in gettasks");
         console.log(this.props.UserId)
-        let url = "http://localhost:8585/api/v1/toDos/"+this.props.UserId;
+        let url = `${Connection}8585/api/v1/toDos/`+this.props.UserId;
         let getty = new XMLHttpRequest();
         getty.open('GET', url)
         getty.responseType = "json";
         getty.onload = () => {
             this.setState({
-                datArr: getty.response
+                datArr: getty.response,
             });
 
         }
         getty.send();
     }
+    reGetOnUpdate=()=>{
+        this.getTasks();
+    }
 
     componentDidMount = () => {
-        console.log("componenetdidmount")
-        console.log(this.props.UserId)
+        console.log(this.props.UserId+"current user id");
         this.getTasks();
-
+        this.setState({
+            passedRefVar:this.props.refreshVar
+        })
     }
     deleteTask=(taskId)=>{
-        let url="http://localhost:8585/api/v1/toDos/"+taskId;
+        let url=`${Connection}8585/api/v1/toDos/`+taskId;
         console.log({taskId})
         let delety= new XMLHttpRequest();
         delety.open("delete",url);
@@ -43,17 +60,21 @@ export default class GetTasks extends Component {
         delety.responseType="json";
        
         delety.onload=()=>{
-            console.log(delety.response);
+            console.log("entry deleted");
+            this.getTasks();
+            this.forceUpdate();
         }
         delety.send();
+        
     }
 
     render() {
-        let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId}> {d.task} <button onClick={()=>{this.deleteTask(d.taskId)}}> delete </button>
-        <TaskUpdater task={d.task} taskPassId={d.taskId}/>
+        let tasks = this.state.datArr.map((d,i) => <p key={"task "+ i} id={d.taskId} className="tasksBox"> {d.task} 
+        <button className="button font"onClick={()=>{this.deleteTask(d.taskId)}}> delete </button>
+        <TaskUpdater task={d.task} taskPassId={d.taskId} UserId={this.state.getUserId} reGetOnUpdate={this.reGetOnUpdate} />
         </p>);
         return (
-            <div>
+            <div className="pageBody font maxWidthWrap">
                 {tasks}
             </div>
 

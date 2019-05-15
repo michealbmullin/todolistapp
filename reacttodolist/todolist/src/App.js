@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddTasks from './addTasks';
 import GetTasks from './GetTasks';
 import LoginSignup from './LoginSignup';
-
+import './Main.css';
 
 class App extends Component {
     constructor(props){
@@ -12,49 +12,51 @@ class App extends Component {
             appUserId:0
         }
     }
-
     setAppUserId = (passedUsrId) => {
         this.setState({
             appUserId:passedUsrId
         })
     }
-    
     callback = (passedrefreshvar) => {
    this.setState({
        refreshVar:passedrefreshvar
    })
+   this.forceUpdate();
+    }
+
+    componentDidUpdate=(prevProp,prevState)=>{
+        if(this.state.refreshVar!==prevState.refreshVar){
+            this.refs.child.getTasks(); 
+            console.log("calling get tasks due to variable change");
+        }
     }
     render() {
-        console.log("started the app render")
-        console.log(this.state.appUserId)
         if (this.state.appUserId==0){
             console.log("userid invalid")
             return(
-                <div>
-                    <h1 id="loginHeader">login or Signup</h1>
-                    <div>
+                <div className="pageBody">
+                    <h1 id="loginHeader" className="font header">Welcome to todos</h1>
+                    <div id="signInWrap" className="maxWidthWrap">
                     <LoginSignup setAppUserId={this.setAppUserId}/>
                     </div>
                 </div>
-
             )
-
         }else{
-            console.log("user id valid")
-            console.log(this.state.appUserId)
+            console.log("user id valid"+this.state.appUserId)
+            console.log("refreshvar in gettasks render "+this.state.refreshVar)
         return (
+            <div className="pageBody">
             <div>
-            <div>
-            <h1 > Todays tasks </h1>
+            <h1 id="taskHeader" className="font header"> Todays tasks </h1>
             </div>
-            <div>
-                <AddTasks callback={this.callback} UserId={this.state.appUserId} />
-                <GetTasks UserId={this.state.appUserId}/>
+            <div id="tasksBlock" className="maxWidthWrap">
+                <AddTasks id="addTaskField" callback={this.callback} UserId={this.state.appUserId} />
+                <GetTasks UserId={this.state.appUserId} refreshVar={this.state.refreshVar} ref="child"/>
             </div>
-            </div>
-              
+            </div>     
         )
     }
+    
 }
 
 
