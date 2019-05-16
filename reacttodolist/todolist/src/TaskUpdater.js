@@ -15,7 +15,7 @@ export default class TaskUpdater extends Component {
     }
     
     updateStatus=()=>{
-        let url = `${Connection}8585/api/v1/toDos//`+this.state.taskId;
+        let url = `${Connection}api/v1/toDos//`+this.state.taskId;
         let updaty= new XMLHttpRequest();
         updaty.open("put", url);
         updaty.setRequestHeader("Content-Type", "application/json");

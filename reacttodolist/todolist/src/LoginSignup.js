@@ -14,7 +14,7 @@ export default class LoginSignup extends Component{
     }
     verifyLogin=(e)=>{
         e.preventDefault();
-        let url = `${Connection}8585/api/v1/User/validate`
+        let url = `${Connection}api/v1/User/validate`
         let verify = new XMLHttpRequest();
         verify.open('post', url)
         verify.setRequestHeader("Content-Type", "application/json");
@@ -48,7 +48,7 @@ export default class LoginSignup extends Component{
         })
     }
     userSignup=()=>{
-        let addyurl = `${Connection}8585/api/v1/UserSignup`;
+        let addyurl = `${Connection}api/v1/UserSignup`;
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);

@@ -33,7 +33,7 @@ export default class AddTasks extends Component{
         });
     }
     postTask=()=>{
-        let addyurl = `${Connection}8585/api/v1/addtoDos`;
+        let addyurl = `${Connection}api/v1/addtoDos`;
         let posty = new XMLHttpRequest();
         posty.responseType = "json";
         posty.open("post", addyurl);

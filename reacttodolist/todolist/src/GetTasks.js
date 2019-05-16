@@ -28,7 +28,7 @@ export default class GetTasks extends Component {
     getTasks = () => {
         console.log("in gettasks");
         console.log(this.props.UserId)
-        let url = `${Connection}8585/api/v1/toDos/`+this.props.UserId;
+        let url = `${Connection}api/v1/toDos/`+this.props.UserId;
         let getty = new XMLHttpRequest();
         getty.open('GET', url)
         getty.responseType = "json";
@@ -52,7 +52,7 @@ export default class GetTasks extends Component {
         })
     }
     deleteTask=(taskId)=>{
-        let url=`${Connection}8585/api/v1/toDos/`+taskId;
+        let url=`${Connection}api/v1/toDos/`+taskId;
         console.log({taskId})
         let delety= new XMLHttpRequest();
         delety.open("delete",url);
