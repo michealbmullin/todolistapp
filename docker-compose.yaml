@@ -23,7 +23,7 @@ services:
                         target: /var/lib/mysql
 
         nginx:
-              image: nginx:latest
+              image: nginx-proj:latest
               depends_on:
                       - todoapp
                       - react
