@@ -17,6 +17,11 @@ services:
               environment:
                       - MYSQL_ROOT_PASSWORD=password
                       - MYSQL_DATABASE=todolistdb
+              volumes:
+                      - type: volume
+                        source: mysqldata
+                        target: /var/lib/mysql
+
         nginx:
               image: nginx:latest
               depends_on:
@@ -29,3 +34,5 @@ services:
               ports:
                  - target: 80
                    published: 80
+volumes:
+        mysqldata:        
