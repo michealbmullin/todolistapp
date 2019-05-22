@@ -1,19 +1,19 @@
 version: '3.7'
 services:
         todoapp:
-                image: todoapp
+                image: michealbmullin/todoapp
                 build: ./ToDoListApp
                 ports:
                    - target: 8585
         react:
-                image: react
+                image: michealbmullin/react
                 build: ./reacttodolist/todolist
                 ports:
                    - target: 3000
                 depends_on:
                          -  mysql
         mysql:
-              image: mysql:5.7
+              image: michealbmullin/ mysql:5.7
               environment:
                       - MYSQL_ROOT_PASSWORD=password
                       - MYSQL_DATABASE=todolistdb
@@ -23,7 +23,7 @@ services:
                         target: /var/lib/mysql
 
         nginx:
-              image: nginx-proj:latest
+              image: michealbmullin/nginx-proj:latest
               build: ./nginx/
               depends_on:
                       - todoapp
