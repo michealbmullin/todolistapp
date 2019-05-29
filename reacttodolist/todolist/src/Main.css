@@ -1,5 +1,5 @@
 .header {
-    background-color: aquamarine;
+    background-color: lightblue;
     /* border-style: solid;
     border-color: darkslategray; */
     text-align: center;
@@ -21,7 +21,7 @@
     border-style: solid;
     border-color: darkslategray;
     border-width: 1px;
-    background-color: aquamarine;
+    background-color: lightblue;
     padding: 12%;
 }
 
@@ -68,7 +68,7 @@
 
 #tasksBlock {
     /* min-width: 20%; */
-    background-color: aquamarine;
+    background-color: lightblue;
     border-style: solid;
     border-color: black;
     border-width: 2px;

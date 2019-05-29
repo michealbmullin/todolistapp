@@ -3,3 +3,11 @@
 *.war
 /first_springboot_app
 /.recommenders/
+/ali app*
+/ToDoLogicSpring*
+/vsfrontendworkspace/practisejavascript*
+/testsdemo*
+/blackjack*
+/selenium*
+/AutomatedTest*
+/Cucumber*

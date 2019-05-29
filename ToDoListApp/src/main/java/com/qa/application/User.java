@@ -38,13 +38,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	// method stubs
-	public void getUser(){
-	}
-	public void validateUser(){
-		
-	}
-	public void userSignup(){
-	
-	}
 }
