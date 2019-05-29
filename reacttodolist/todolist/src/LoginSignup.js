@@ -67,7 +67,6 @@ export default class LoginSignup extends Component{
             }
             else{
                 alert("signup Succesfull");
-                this.verifyLogin();
             }
         }
     }
